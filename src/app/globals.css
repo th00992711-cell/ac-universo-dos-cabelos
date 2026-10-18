@@ -1,0 +1,176 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/*
+ * AC Universo dos Cabelos — design system
+ * Paleta derivada da logo (valores de referência; refinar quando o arquivo oficial chegar).
+ * Dourado puro (#C9A24D) é usado em superfícies e detalhes; para texto dourado sobre fundo
+ * claro usamos --gold-ink, que mantém contraste AA.
+ */
+:root {
+  --gold: #c9a24d;
+  --gold-deep: #b58a36;
+  --gold-ink: #8a6829;
+  --champagne: #e8d7b0;
+  --champagne-soft: #f3ead6;
+  --ivory: #faf8f4;
+  --white: #ffffff;
+  --cocoa: #473727;
+  --cocoa-deep: #2b2016;
+  --cocoa-soft: #6e5c4a;
+  --line: #e8dfcd;
+  --whatsapp: #1f9d55;
+
+  --background: var(--ivory);
+  --foreground: var(--cocoa);
+  --card: var(--white);
+  --card-foreground: var(--cocoa);
+  --primary: var(--gold);
+  --primary-foreground: var(--cocoa-deep);
+  --secondary: var(--champagne-soft);
+  --secondary-foreground: var(--cocoa);
+  --muted: var(--champagne-soft);
+  --muted-foreground: var(--cocoa-soft);
+  --accent: var(--champagne);
+  --accent-foreground: var(--cocoa-deep);
+  --destructive: #b3261e;
+  --border: var(--line);
+  --input: #ddd2bd;
+  --ring: var(--gold);
+  --radius: 1rem;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-gold: var(--gold);
+  --color-gold-deep: var(--gold-deep);
+  --color-gold-ink: var(--gold-ink);
+  --color-champagne: var(--champagne);
+  --color-champagne-soft: var(--champagne-soft);
+  --color-ivory: var(--ivory);
+  --color-cocoa: var(--cocoa);
+  --color-cocoa-deep: var(--cocoa-deep);
+  --color-cocoa-soft: var(--cocoa-soft);
+  --color-whatsapp: var(--whatsapp);
+  --radius-sm: calc(var(--radius) - 8px);
+  --radius-md: calc(var(--radius) - 4px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-sans: var(--font-manrope);
+  --font-display: var(--font-cormorant);
+  --shadow-soft: 0 1px 2px rgb(71 55 39 / 0.04), 0 12px 32px -18px rgb(71 55 39 / 0.18);
+  --shadow-lift: 0 2px 4px rgb(71 55 39 / 0.05), 0 26px 50px -24px rgb(71 55 39 / 0.3);
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    @apply bg-background font-sans text-foreground antialiased;
+    text-rendering: optimizeLegibility;
+    /* Cormorant usa algarismos de estilo antigo por padrão; preços e medidas ficam mais legíveis assim */
+    font-variant-numeric: lining-nums;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display font-medium tracking-tight text-cocoa-deep;
+  }
+  ::selection {
+    background: color-mix(in oklab, var(--gold) 35%, transparent);
+  }
+  :focus-visible {
+    outline-color: var(--gold);
+  }
+}
+
+/* Rótulo pequeno acima dos títulos */
+@utility eyebrow {
+  font-family: var(--font-manrope);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold-ink);
+}
+
+/* Filete dourado decorativo */
+@utility gold-rule {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
+}
+
+/* Texto com acabamento metálico discreto (apenas em títulos grandes) */
+@utility text-gold-metal {
+  background-image: linear-gradient(105deg, var(--gold-ink) 0%, var(--gold-deep) 40%, var(--gold) 60%, var(--gold-ink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@utility card-lift {
+  transition:
+    box-shadow 0.4s ease,
+    transform 0.4s ease,
+    border-color 0.4s ease;
+  &:hover {
+    box-shadow: var(--shadow-lift);
+    transform: translateY(-3px);
+    border-color: color-mix(in oklab, var(--gold) 45%, var(--line));
+  }
+}
+
+@utility container-page {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 80rem;
+  padding-inline: 1.25rem;
+  @media (width >= 48rem) {
+    padding-inline: 2rem;
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@utility animate-rise {
+  animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
