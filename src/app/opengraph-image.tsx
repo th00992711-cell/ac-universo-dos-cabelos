@@ -1,10 +1,15 @@
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 import { ImageResponse } from "next/og";
 
 export const alt = "AC Universo dos Cabelos";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
-export default function OpengraphImage() {
+export default async function OpengraphImage() {
+  const emblem = await readFile(join(process.cwd(), "public/brand/ac-emblema.png"));
+  const src = `data:image/png;base64,${emblem.toString("base64")}`;
+
   return new ImageResponse(
     (
       <div
@@ -12,32 +17,19 @@ export default function OpengraphImage() {
           width: "100%",
           height: "100%",
           display: "flex",
-          flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
-          background: "radial-gradient(circle at 50% 0%, #fffaf0 0%, #f3ead6 55%, #e8d7b0 100%)",
+          gap: 64,
+          background: "radial-gradient(circle at 30% 20%, #ffffff 0%, #faf8f4 45%, #f3ead6 100%)",
           color: "#2b2016",
         }}
       >
-        <div
-          style={{
-            width: 150,
-            height: 150,
-            borderRadius: 999,
-            border: "3px solid #c9a24d",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            fontSize: 64,
-            color: "#b58a36",
-            letterSpacing: 4,
-          }}
-        >
-          AC
+        <img src={src} width={430} height={428} alt="" />
+        <div style={{ display: "flex", flexDirection: "column", maxWidth: 520 }}>
+          <div style={{ fontSize: 22, letterSpacing: 8, color: "#8a6829" }}>CATÁLOGO ONLINE</div>
+          <div style={{ marginTop: 20, width: 140, height: 2, background: "#c9a24d" }} />
+          <div style={{ marginTop: 28, fontSize: 58, lineHeight: 1.1, color: "#473727" }}>Sua beleza merece o extraordinário.</div>
         </div>
-        <div style={{ marginTop: 36, fontSize: 30, letterSpacing: 14, color: "#8a6829" }}>UNIVERSO DOS CABELOS</div>
-        <div style={{ marginTop: 24, width: 220, height: 2, background: "#c9a24d" }} />
-        <div style={{ marginTop: 28, fontSize: 40, color: "#473727" }}>Sua beleza merece o extraordinário.</div>
       </div>
     ),
     size,

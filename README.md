@@ -152,7 +152,7 @@ Em **Configurações**:
 
 - **WhatsApp:** somente números, com 55 + DDD (ex.: `5511999998888`). Use o link **Testar a mensagem** para conferir.
 - **Mensagem da página de produto:** `{produto}` e `{sku}` são trocados pelo nome e pelo código. Padrão: *"Olá! Vim pelo site da AC Universo dos Cabelos e gostaria de saber mais sobre o produto {produto}, código {sku}."*
-- **Logo:** envie o PNG oficial com fundo transparente. Enquanto não houver logo, o site mostra o monograma "AC".
+- **Logo:** a logo oficial já vem no site (`public/brand/`: selo completo, monograma com louros e ícones). O campo do painel é opcional e serve só para trocá-la por outro arquivo (PNG com fundo transparente).
 - **Textos institucionais, diferenciais, rodapé, contato e política de privacidade.**
 
 Em **Banners**, troque a ilustração do topo por uma fotografia vertical (proporção 4:5) e cadastre imagens promocionais (horizontais, 2:1).
@@ -211,7 +211,7 @@ src/
     sitemap.ts, robots.ts, manifest.ts, opengraph-image.tsx
   components/
     ui/                componentes base (botão, campos, diálogo, gaveta, tabela…)
-    brand/             logo e monograma
+    brand/             logo oficial (selo, marca horizontal e monograma)
     site/              cabeçalho, rodapé, banner, cards, seções da home
     catalog/           filtros, paginação, esqueletos de carregamento
     product/           galeria com zoom, contador de visualizações

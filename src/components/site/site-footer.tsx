@@ -19,7 +19,7 @@ export function SiteFooter({ settings, categories }: { settings: SiteSettings; c
     <footer className="mt-auto border-t border-border bg-champagne-soft/60">
       <div className="container-page grid gap-12 py-16 md:grid-cols-2 lg:grid-cols-[1.4fr_1fr_1fr_1.2fr]">
         <div className="grid content-start gap-5">
-          <Logo logoUrl={settings.logo_url} name={settings.business_name} />
+          <Logo logoUrl={settings.logo_url} name={settings.business_name} variant="emblem" className="size-32" />
           {settings.footer_text && <p className="max-w-xs text-sm leading-relaxed text-muted-foreground">{settings.footer_text}</p>}
           <div className="flex gap-2">
             {instagram && (

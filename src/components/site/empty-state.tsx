@@ -14,7 +14,7 @@ export function EmptyState({
 }) {
   return (
     <div className={cn("flex flex-col items-center gap-4 rounded-3xl border border-dashed border-gold/50 bg-card/60 px-6 py-16 text-center", className)}>
-      <Monogram className="size-16 opacity-80" />
+      <Monogram className="w-24 opacity-85" />
       <h3 className="text-3xl">{title}</h3>
       {description && <p className="max-w-md text-sm leading-relaxed text-muted-foreground">{description}</p>}
       {action}

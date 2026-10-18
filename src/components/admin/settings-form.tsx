@@ -90,7 +90,12 @@ export function SettingsForm({ settings }: { settings: SiteSettings }) {
             control={control}
             name="logo_path"
             render={({ field }) => (
-              <ImageField label="Logo (PNG com fundo transparente)" folder="branding" value={field.value ?? ""} onChange={field.onChange} aspect="aspect-[5/2]" fit="contain" />
+              <div className="grid gap-2">
+                <ImageField label="Logo alternativa (opcional)" folder="branding" value={field.value ?? ""} onChange={field.onChange} aspect="aspect-[5/2]" fit="contain" />
+                <p className="text-xs leading-relaxed text-muted-foreground">
+                  A logo oficial da AC já está no site. Envie um arquivo aqui só se quiser substituí-la (PNG com fundo transparente).
+                </p>
+              </div>
             )}
           />
         </div>

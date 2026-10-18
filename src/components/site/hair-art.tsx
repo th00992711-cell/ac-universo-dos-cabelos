@@ -1,10 +1,16 @@
-import { Monogram } from "@/components/brand/logo";
+import Image from "next/image";
+import { BRAND } from "@/components/brand/logo";
 
 /** Ilustração usada enquanto não há fotografia cadastrada no banner. */
 export function HairArt() {
   return (
     <div className="relative h-full w-full overflow-hidden bg-[radial-gradient(120%_80%_at_70%_10%,#fffaf0_0%,#f3ead6_45%,#e8d7b0_100%)]">
-      <svg viewBox="0 0 400 520" preserveAspectRatio="xMidYMid slice" className="absolute inset-0 h-full w-full" aria-hidden>
+      <svg
+        viewBox="0 0 400 520"
+        preserveAspectRatio="xMidYMid slice"
+        className="absolute inset-0 h-full w-full"
+        aria-hidden
+      >
         <defs>
           <linearGradient id="strand" x1="0" y1="0" x2="0" y2="1">
             <stop offset="0" stopColor="#B58A36" stopOpacity="0.05" />
@@ -27,7 +33,18 @@ export function HairArt() {
         })}
       </svg>
       <div className="absolute inset-0 flex items-center justify-center">
-        <Monogram className="size-28 drop-shadow-[0_10px_30px_rgba(181,138,54,0.35)] sm:size-36" />
+        <div className="rounded-full bg-[radial-gradient(circle,#fffdf8_60%,#faf6ec_100%)] p-2 shadow-[0_18px_40px_-12px_rgba(181,138,54,0.45)] ring-1 ring-gold/25">
+          <Image
+            src={BRAND.emblem.src}
+            width={BRAND.emblem.width}
+            height={BRAND.emblem.height}
+            alt=""
+            aria-hidden
+            sizes="(min-width: 640px) 256px, 176px"
+            preload
+            className="w-44 sm:w-64"
+          />
+        </div>
       </div>
     </div>
   );

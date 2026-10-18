@@ -7,7 +7,7 @@ export function AuthShell({ title, description, children }: { title: string; des
     <main className="flex min-h-dvh items-center justify-center bg-[radial-gradient(80%_60%_at_50%_0%,#f3ead6,transparent_70%)] px-4 py-12">
       <div className="grid w-full max-w-md gap-8">
         <Link href="/" className="mx-auto">
-          <Logo />
+          <Logo variant="emblem" className="size-36" priority />
         </Link>
         <div className="grid gap-6 rounded-3xl border border-border bg-card p-7 shadow-soft sm:p-9">
           <div className="grid gap-1.5 text-center">

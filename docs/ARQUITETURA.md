@@ -36,7 +36,7 @@ Ao salvar qualquer coisa no painel, `revalidatePath("/", "layout")` invalida o c
 
 ## 3. Design system
 
-**Paleta** (derivada da referência da logo; refinar quando o arquivo oficial chegar):
+**Paleta** (derivada da logo oficial, em `public/brand/`):
 
 | Token | Cor | Uso |
 |---|---|---|
